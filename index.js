@@ -19,12 +19,11 @@ deletebtn.addEventListener("click", function(){
 
 savetab.addEventListener("click", function(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        let activeTab = tabs[0];
-        let activeTabId = activeTab.id
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
     })
-    myLeads.push(tabs[0].url)
-    localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    render(myLeads)
+    
 })
 
 inputel.addEventListener("click", function() {
